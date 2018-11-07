@@ -134,6 +134,7 @@ class ReactIntlEditor {
 	private function extractStringsFromLocaleFile($file) {
 		$stringsFound = [];
 		$contents = file_get_contents($file);
+$contents = preg_replace("/[\r\n]+/", " ", $contents);
 		$json = json_decode($contents);
 		if ( ! $json ) return [];
 		foreach ($json as $key=>$value) {
