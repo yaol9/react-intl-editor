@@ -338,9 +338,9 @@ $contents = preg_replace("/[\r\n]+/", " ", $contents);
 			$output .= '"' . $this->localeStrings[$locale][$i][0] . '": "';
 
 			if (strpos($this->localeStrings[$locale][$i][1], "\n") !== false) {
-				$output .= str_replace("\r\n", "\\n", $this->localeStrings[$locale][$i][1]);
+				$output .= addcslashes(str_replace("\r\n", "\\n", $this->localeStrings[$locale][$i][1]), '"');
 			} else {
-				$output .= $this->localeStrings[$locale][$i][1];
+				$output .= addcslashes($this->localeStrings[$locale][$i][1], '"');
 			}
 			$output .= ($i == count($this->localeStrings[$locale]) -1 ) ? '"' : '",';
 		}
